@@ -1,3 +1,6 @@
+ccflags-y += -I$(srctree)/arch/arm/mach-tegra/include
+asflags-y += -I$(srctree)/arch/arm/mach-tegra/include
+
 obj-y                                   += common.o
 obj-y                                   += io.o
 obj-y                                   += irq.o
