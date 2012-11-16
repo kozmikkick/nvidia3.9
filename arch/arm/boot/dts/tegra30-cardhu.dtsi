@@ -27,6 +27,15 @@
 	model = "NVIDIA Tegra30 Cardhu evaluation board";
 	compatible = "nvidia,cardhu", "nvidia,tegra30";
 
+	host1x {
+		dc@54200000 {
+			rgb {
+				status = "okay";
+				nvidia,ddc-i2c-bus = <&lcd_ddc>;
+			};
+		};
+	};
+
 	memory {
 		reg = <0x80000000 0x40000000>;
 	};
@@ -127,7 +136,7 @@
 		status = "okay";
 	};
 
-	i2c@7000c000 {
+	lcd_ddc: i2c@7000c000 {
 		status = "okay";
 		clock-frequency = <100000>;
 	};
