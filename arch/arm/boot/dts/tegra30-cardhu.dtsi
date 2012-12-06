@@ -27,18 +27,6 @@
 	model = "NVIDIA Tegra30 Cardhu evaluation board";
 	compatible = "nvidia,cardhu", "nvidia,tegra30";
 
-	host1x {
-		hdmi {
-			status = "okay";
-
-			vdd-supply = <&sys_3v3_reg>;
-			pll-supply = <&vio_reg>;
-
-			nvidia,hpd-gpio = <&gpio 111 0>; /* PN7 */
-			nvidia,ddc-i2c-bus = <&hdmi_ddc>;
-		};
-	};
-
 	memory {
 		reg = <0x80000000 0x40000000>;
 	};
@@ -162,7 +150,7 @@
 		};
 	};
 
-	hdmi_ddc: i2c@7000c700 {
+	i2c@7000c700 {
 		status = "okay";
 		clock-frequency = <100000>;
 	};
