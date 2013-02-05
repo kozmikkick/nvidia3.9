@@ -124,6 +124,12 @@
 				nvidia,pull = <0>;
 				nvidia,tristate = <0>;
 			};
+			pu0 {
+				nvidia,pins =	"pu0", "pu1";
+				nvidia,function = "rsvd4";
+				nvidia,pull = <0>;
+				nvidia,tristate = <0>;
+			};
 		};
 	};
 
