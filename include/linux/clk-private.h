@@ -144,12 +144,13 @@ struct clk {
 
 #define DEFINE_CLK_MUX(_name, _parent_names, _parents, _flags,	\
 				_reg, _shift, _width,		\
-				_mux_flags, _lock)		\
+				_mux_flags, _table, _lock)	\
 	static struct clk _name;				\
 	static struct clk_mux _name##_hw = {			\
 		.hw = {						\
 			.clk = &_name,				\
 		},						\
+		.table = _table,				\
 		.reg = _reg,					\
 		.shift = _shift,				\
 		.width = _width,				\
