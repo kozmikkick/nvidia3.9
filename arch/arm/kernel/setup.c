@@ -847,6 +847,14 @@ static const char *hwcap_str[] = {
 	NULL
 };
 
+void get_diag(void *out)
+{
+	u32 *pdiag = out;
+	u32 diag;
+	asm("mrc p15, 0, %0, c15, c0, 1" : "=r" (diag));
+	*pdiag = diag;
+}
+
 static int c_show(struct seq_file *m, void *v)
 {
 	int i, j;
@@ -899,7 +907,12 @@ static int c_show(struct seq_file *m, void *v)
 			seq_printf(m, "CPU part\t: 0x%03x\n",
 				   (cpuid >> 4) & 0xfff);
 		}
-		seq_printf(m, "CPU revision\t: %d\n\n", cpuid & 15);
+		seq_printf(m, "CPU revision\t: %d\n", cpuid & 15);
+
+		smp_call_function_single(i, get_diag, &cpuid, 1);
+		seq_printf(m, "Diag reg\t: %08x\n", cpuid);
+
+		seq_printf(m, "\n");
 	}
 
 	seq_printf(m, "Hardware\t: %s\n", machine_name);
