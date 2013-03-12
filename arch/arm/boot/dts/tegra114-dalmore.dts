@@ -742,6 +742,12 @@
 		clock-frequency = <100000>;
 	};
 
+	ahub {
+		i2s@70080400 {
+			status = "okay";
+		};
+	};
+
 	sdhci@78000400 {
 		cd-gpios = <&gpio 170 1>; /* gpio PV2 */
 		bus-width = <4>;
